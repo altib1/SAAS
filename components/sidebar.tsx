@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Montserrat } from 'next/font/google';
 import { Code, ImageIcon, LayoutDashboard, LucidePenLine, MessageSquare, MusicIcon, Settings, VideoIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 const montserrat = Montserrat({
      weight:"600", 
      subsets:["latin"]
@@ -55,6 +56,7 @@ const routes = [
 ];
 
 const Sidebar = () => {
+    const pathname = usePathname();
     return (
         <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
             <div className="px-3 py-2 flex-1">
@@ -79,7 +81,8 @@ const Sidebar = () => {
                                 'flex items-center px-3 py-2 rounded-md',
                                 'hover:bg-gray-700 hover:text-white',
                                 'transition-colors duration-200',
-                                'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'
+                                'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white',
+                                pathname === route.href ? 'bg-white/10 text-white' : 'text-zinc-400'
                             )}
                         >
                             <div className=' flex items-center flex-1'>
